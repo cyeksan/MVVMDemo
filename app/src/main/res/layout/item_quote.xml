@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="quote"
+            type="com.example.mvvmdemo.data.db.entities.Quote" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/quote"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@{`'` + quote.quoteText + `'`}" />
+
+            <TextView
+                android:id="@+id/author"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/quote"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="8dp"
+                android:text="@{`- ` + quote.author}"
+                android:textColor="@color/blue"
+                android:textStyle="italic" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/author"
+                android:background="@android:color/darker_gray" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

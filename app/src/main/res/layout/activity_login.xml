@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="275dp"
+                    android:background="@drawable/blue_bg">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="90dp"
+                        android:src="@drawable/logo" />
+
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/blue_border_rounded_cornwe">
+
+                    <EditText
+                        android:id="@+id/username_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/username_icon"
+                        android:background="@android:color/transparent"
+                        android:hint="E-mail"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingVertical="16dp"
+                        android:paddingStart="16dp"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/username_icon"
+                        android:layout_width="15dp"
+                        android:layout_height="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/email" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/blue_border_rounded_cornwe">
+
+                    <EditText
+                        android:id="@+id/password_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/password_icon"
+                        android:background="@android:color/transparent"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingVertical="16dp"
+                        android:paddingStart="16dp"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/password_icon"
+                        android:layout_width="15dp"
+                        android:layout_height="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/password" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/sign_in_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/blue_fill__rounded_color"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingVertical="16dp"
+                    android:text="Login"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:paddingVertical="16dp"
+                    android:text="FORGOT PASSWORD?"
+                    android:textColor="#1566e0"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center"
+                    android:paddingVertical="16dp"
+                    android:text="Don't have an account? Sign up here"
+                    android:textColor="#1566e0"
+                    android:textSize="14sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/signup_btn"
+                    />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:theme="@style/progressBarBlue"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
