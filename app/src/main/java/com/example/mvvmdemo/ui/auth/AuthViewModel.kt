@@ -3,12 +3,13 @@ package com.example.mvvmdemo.ui.auth
 
 import androidx.lifecycle.ViewModel
 import com.example.mvvmdemo.data.db.entities.User
+import com.example.mvvmdemo.data.repositories.IUserRepository
 import com.example.mvvmdemo.data.repositories.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class AuthViewModel(
-    private val userRepository: UserRepository
+    private val userRepository: IUserRepository
 ) : ViewModel() {
 
     fun getLoggedInUser() = userRepository.getUser()

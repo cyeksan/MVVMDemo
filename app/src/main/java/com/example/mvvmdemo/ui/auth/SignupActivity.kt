@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
+import java.net.ConnectException
 import java.net.SocketTimeoutException
 
 class SignupActivity : AppCompatActivity(), KodeinAware {
@@ -81,12 +82,13 @@ class SignupActivity : AppCompatActivity(), KodeinAware {
                 }
 
             } catch (e: ApiException) {
-                e.printStackTrace()
+                binding.rootLayout.snackbar(e.message!!)
             } catch (e: NoInternetException) {
-                e.printStackTrace()
+                binding.rootLayout.snackbar(e.message!!)
             } catch (e: SocketTimeoutException) {
-                e.printStackTrace()
-
+                binding.rootLayout.snackbar(e.message!!)
+            } catch (e: ConnectException){
+                binding.rootLayout.snackbar(e.message!!)
             }
         }
     }

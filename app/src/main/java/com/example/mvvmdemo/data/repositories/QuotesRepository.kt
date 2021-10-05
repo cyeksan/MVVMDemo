@@ -3,6 +3,7 @@ package com.example.mvvmdemo.data.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvmdemo.data.db.AppDatabase
+import com.example.mvvmdemo.data.db.QuotesDao
 import com.example.mvvmdemo.data.db.entities.Quote
 import com.example.mvvmdemo.data.network.MyApi
 import com.example.mvvmdemo.data.network.SafeApiRequest
@@ -12,30 +13,31 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 
-private const val MINIMUM_INTERVAL = 6
+const val MINIMUM_INTERVAL = 6
 
 class QuotesRepository(
     private val api: MyApi,
-    private val db: AppDatabase,
+    private val quotesDao: QuotesDao,
     private val sharedPreferences: PreferenceProvider
-): SafeApiRequest() {
+): SafeApiRequest(), IQuotesRepository {
     private val quotes = MutableLiveData<List<Quote>>()
 
     init{
+
         quotes.observeForever{
             saveQuotes(it)
         }
     }
 
-    suspend fun getQuotes(): LiveData<List<Quote>> {
+    override suspend fun getQuotes(): LiveData<List<Quote>> {
 
         return withContext(Dispatchers.IO){
             fetchQuotes()
-            db.getQuotesDao().getQuotes()
+            quotesDao.getQuotes()
         }
     }
 
-    private suspend fun fetchQuotes() {
+    override suspend fun fetchQuotes() {
 
         val lastSavedAt = sharedPreferences.getLastSavedAt()
         if(lastSavedAt == null || isFetchNeeded(lastSavedAt.stringToCalendar())){
@@ -45,16 +47,16 @@ class QuotesRepository(
         }
     }
 
-    private fun isFetchNeeded(savedAt: Calendar?): Boolean {
+    override fun isFetchNeeded(savedAt: Calendar?): Boolean {
         return savedAt?.get(Calendar.HOUR)?.minus(Calendar.getInstance().get(Calendar.HOUR))!! > MINIMUM_INTERVAL
     }
 
-    private fun saveQuotes(quotes: List<Quote>) {
+    override fun saveQuotes(quotes: List<Quote>) {
         Coroutines.io {
             val currentTime = Calendar.getInstance().time
 
             sharedPreferences.saveLastSavedAt(currentTime.dateToString())
-            db.getQuotesDao().saveAllQuotes(quotes)
+            quotesDao.saveAllQuotes(quotes)
         }
     }
 }

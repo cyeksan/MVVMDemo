@@ -4,6 +4,6 @@ import com.example.mvvmdemo.data.db.entities.User
 
 data class AuthResponse(
     val isSuccess : Boolean?,
-    val message : String?,
+    var message : String?,
     val user : User?
 )
