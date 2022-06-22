@@ -8,4 +8,4 @@ An Android quote application that displays impressive quotes. Auth and Quote API
 * Kodein for DI
 * Data/View binding
 * Unit Test
-* UI Test with Espresso
+* UI Test with Espresso 
